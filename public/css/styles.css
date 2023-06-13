@@ -2,7 +2,7 @@
     --bs-font-sans-serif: 'Rubik', sans-serif;
 }
 
-.container-xxl { max-width: 85%;}
+.container-xxl { max-width: 90%;}
 
 body{
     background-image: url("/img/i-like-food.svg");
@@ -35,4 +35,6 @@ a{ color: var(--bs-dark); }
 
   .category_img--large {
     height: 250px;
-  }
+  } 
+
+  
