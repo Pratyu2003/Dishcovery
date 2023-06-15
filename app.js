@@ -7,6 +7,8 @@ import fileUpload from "express-fileupload";
 import session from "express-session";
 import cookieParser from "cookie-parser";
 import flash from "connect-flash";
+import methodOverride from "method-override";
+
 
 export const app = express();
 const port = process.env.PORT;
@@ -16,6 +18,10 @@ config({
 });
 
 //using Middleware
+app.use(fileUpload({
+    useTempFiles: true,
+    tempFileDir: 'public/uploads/'
+}));
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.use(expressLayouts);
@@ -27,7 +33,7 @@ app.use(session({
     resave: true
 }));
 app.use(flash());
-app.use(fileUpload());
+
 
 
  app.set("layout", "./layouts/main.ejs");

@@ -4,6 +4,7 @@ import {
 import {
     Recipes
 } from "../models/recipe.js";
+import path from "path";
 
 export const homepage = async (req, res, next) => {
 
@@ -37,6 +38,15 @@ export const homepage = async (req, res, next) => {
     }
 
 };
+
+export const register = async (req, res, next) => {
+res.render("register.ejs");
+};
+
+
+export const login = async (req, res, next) => {
+    res.render("login.ejs");
+    };
 
 
 export const AddNewCategory = async (req, res) => {
@@ -117,6 +127,20 @@ export const getRecipe = async (req, res, next) => {
         res.status(500).send({
             message: error.message || "some error occured"
         });
+    }
+};
+
+
+export const deleteRecipe = async (req, res, next) => {
+    let recipeId;
+    try {
+        const recipeId = req.params.id;
+        const recipe = await Recipes.findByIdAndDelete(recipeId);
+        res.redirect(`/recipe/${recipeId}`);
+    } catch (err) {
+        console.error(err);
+        req.flash('error', 'An error occurred while deleting the recipe');
+        res.redirect(`/recipe/${recipeId}`);
     }
 };
 
@@ -222,67 +246,53 @@ export const submitRecipe = async (req, res, next) => {
 
 export const submitRecipeOnPost = async (req, res, next) => {
 
-    // try {
-        // let imageUploadFile;
-        // let uploadPath;
-        // let newImageName;
+    try {
 
-        // if(!req.files || Object.keys(req.files).length===0){
-        //     console.log('No Image is uploaded.');
-        // } else {
+        let imageUploadFile;
+        let uploadPath;
+        let newImageName;
 
-        //     imageUploadFile = req.files.image;
-        //     newImageName = Date.now() + imageUploadFile.name;
+        if (!req.files || Object.keys(req.files).length === 0) {
+            console.log('No Image is uploaded.');
+        } else {
 
-        //     uploadPath = __dirname + '/public/uploads' + newImageName + '.jpg';
+            imageUploadFile = req.files.image;
+            newImageName = Date.now() + '-' + imageUploadFile.name;
+            // console.log(newImageName);
+            uploadPath = path.resolve('./') + '/public/uploads/' + newImageName;
 
-        //    await imageUploadFile.mv(uploadPath, function(err){
-        //         if(err) console.log(err); //return res.status(500).send(err);
-        //     });
-        // }
+            imageUploadFile.mv(uploadPath, function (err) {
+                if (err) return res.status(500).send(err);
+            })
+        }
 
-        const {
-            name,
-            description,
-            email,
-            ingredients,
-            category,
-            image
-        } = req.body;
-    
-        await Recipes.create({
-            name,
-            description,
-            email,
-            ingredients,
-            category,
-            image
+        const newRecipe = await Recipes.create({
+            name: req.body.name,
+            description: req.body.description,
+            email: req.body.email,
+            ingredients: req.body.ingredients,
+            category: req.body.category,
+            image: newImageName
         });
 
-        // req.flash('infoSubmit', 'Recipe has been added successfully')
-        // res.redirect('/submit-recipe');
+
+        await newRecipe.save();
+
+        req.flash('infoSubmit', 'Recipe has been added successfully');
+        
+        res.redirect('/submit-recipe');
         res.json({
             success: true,
             message: "Registered Successfully",
-            
+
         });
-    // } catch (error) {
-    //     res.json(error);
-    //     req.flash('infoErrors', error);
-    //     res.redirect('/submit-recipe');
-        
-    // }
+    } catch (error) {
+        console.log(error);
+        req.flash('infoErrors', error);
+        res.redirect('/submit-recipe');
+
+    }
 };
-
-
-async function deleteRecipe(){
-  try {
-    await Recipes.deleteOne({ name: 'Crab cakes' });
-  } catch (error) {
-    console.log(error);
-  }
-}
-deleteRecipe();
 
 
 // Update Recipe
