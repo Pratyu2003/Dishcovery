@@ -2,13 +2,25 @@
 
 # Description:
 
-Blogify is a full-stack web application with user authentication, including blog setup, login, logout, and password reset. 
-Registered users can create and set up their own blogs and view all their content on the admin dashboard. 
-Readers can comment on posts and reply to comments. 
-Readers will receive email notifications for replies to their comments via gmail. 
-The web application enables users to perform CRUD operations on their blog content. 
+Dischcovery is a full-stack Food dishes recipe sharing web application.
+where user can share their recipe by submitting a recipe form.
+User can update and delete their uploaded recipes. User can search recipe by its name, can apply category filters.
+It also contain latest section which display most recently shared recipes.
 It is implemented using the Model-View-Controller (MVC) architecture to separate concerns. 
-The application utilizes the Socket.IO library to facilitate real-time updates on posts and comments.
+
+
+◦ Abstract: recipe sharing application where user can share their recipe by submitting a recipe form.
+can update and delete their uploaded recipes. User can search recipe by its name, can apply category filters.
+It also contain latest section which display most recently shared recipes.
+◦ Technology used: EJS, Bootstrap, JavaScript, Node.js, Express.js, MongoDB.
+
+#TeckStack 
+![image](https://github.com/Pratyu2003/Dishcovery/assets/91794200/4c120dca-fb36-4849-822a-e58e26cf5dfe) 
+![image](https://github.com/Pratyu2003/Dishcovery/assets/91794200/e82c856a-813e-47b8-aecb-c3527f10ea66)
+![image](https://github.com/Pratyu2003/Dishcovery/assets/91794200/d6132f02-e71e-47b8-a357-3f7d4545c46a)
+![image](https://github.com/Pratyu2003/Dishcovery/assets/91794200/db0b892d-3f4b-49af-9c8b-063f0a548f4a)
+![image](https://github.com/Pratyu2003/Dishcovery/assets/91794200/8dac5acd-ad0f-449c-90f6-47b42b867d66)
+
 
 # How to Setup:
 
