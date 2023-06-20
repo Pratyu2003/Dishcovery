@@ -9,7 +9,8 @@ It also contain latest section which display most recently shared recipes.
 It is implemented using the Model-View-Controller (MVC) architecture to separate concerns. 
 
 
-#TeckStack 
+# TeckStack:
+
 EJS, Bootstrap, JavaScript, Node.js, Express.js, MongoDB.
 
 
