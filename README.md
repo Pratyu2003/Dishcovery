@@ -9,17 +9,13 @@ It also contain latest section which display most recently shared recipes.
 It is implemented using the Model-View-Controller (MVC) architecture to separate concerns. 
 
 
-◦ Abstract: recipe sharing application where user can share their recipe by submitting a recipe form.
-can update and delete their uploaded recipes. User can search recipe by its name, can apply category filters.
-It also contain latest section which display most recently shared recipes.
-◦ Technology used: EJS, Bootstrap, JavaScript, Node.js, Express.js, MongoDB.
-
 #TeckStack 
 ![image](https://github.com/Pratyu2003/Dishcovery/assets/91794200/4c120dca-fb36-4849-822a-e58e26cf5dfe) 
-![image](https://github.com/Pratyu2003/Dishcovery/assets/91794200/e82c856a-813e-47b8-aecb-c3527f10ea66)
-![image](https://github.com/Pratyu2003/Dishcovery/assets/91794200/d6132f02-e71e-47b8-a357-3f7d4545c46a)
-![image](https://github.com/Pratyu2003/Dishcovery/assets/91794200/db0b892d-3f4b-49af-9c8b-063f0a548f4a)
-![image](https://github.com/Pratyu2003/Dishcovery/assets/91794200/8dac5acd-ad0f-449c-90f6-47b42b867d66)
+![image](https://raw.githubusercontent.com/tandpfun/skill-icons/59059d9d1a2c092696dc66e00931cc1181a4ce1f/icons/Bootstrap.svg)
+![image](https://raw.githubusercontent.com/tandpfun/skill-icons/59059d9d1a2c092696dc66e00931cc1181a4ce1f/icons/JavaScript.svg)
+![image](https://raw.githubusercontent.com/tandpfun/skill-icons/59059d9d1a2c092696dc66e00931cc1181a4ce1f/icons/NodeJS-Light.svg)
+![image](https://raw.githubusercontent.com/tandpfun/skill-icons/59059d9d1a2c092696dc66e00931cc1181a4ce1f/icons/ExpressJS-Light.svg)
+![image](https://raw.githubusercontent.com/tandpfun/skill-icons/59059d9d1a2c092696dc66e00931cc1181a4ce1f/icons/MongoDB.svg)
 
 
 # How to Setup:
