@@ -10,13 +10,7 @@ It is implemented using the Model-View-Controller (MVC) architecture to separate
 
 
 #TeckStack 
-
-```markdown
-![Logo 1](https://github.com/Pratyu2003/Dishcovery/assets/91794200/4c120dca-fb36-4849-822a-e58e26cf5dfe)
-![Logo 2](https://raw.githubusercontent.com/tandpfun/skill-icons/59059d9d1a2c092696dc66e00931cc1181a4ce1f/icons/Bootstrap.svg)
-![Logo 3](https://raw.githubusercontent.com/tandpfun/skill-icons/59059d9d1a2c092696dc66e00931cc1181a4ce1f/icons/JavaScript.svg)
-![Logo 4](https://raw.githubusercontent.com/tandpfun/skill-icons/59059d9d1a2c092696dc66e00931cc1181a4ce1f/icons/NodeJS-Light.svg)
-![Logo 5](https://raw.githubusercontent.com/tandpfun/skill-icons/59059d9d1a2c092696dc66e00931cc1181a4ce1f)
+EJS, Bootstrap, JavaScript, Node.js, Express.js, MongoDB.
 
 
 # How to Setup:
