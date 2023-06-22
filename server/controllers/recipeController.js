@@ -4,7 +4,7 @@ import {
 import {
     Recipes
 } from "../models/recipe.js";
-import path from "path";
+
 
 export const homepage = async (req, res, next) => {
 
@@ -16,9 +16,13 @@ export const homepage = async (req, res, next) => {
         }).limit(limitNumber);
         const latest_American = await Recipes.find({
             'category': 'American'
+        }).sort({
+            _id: -1
         }).limit(limitNumber);
         const latest_Indian = await Recipes.find({
             'category': 'Indian'
+        }).sort({
+            _id: -1
         }).limit(limitNumber);
         const food = {
             latest,
@@ -117,7 +121,7 @@ export const getRecipe = async (req, res, next) => {
     try {
 
         let recipeId = req.params.id;
-        const recipe = await Recipes.findById(recipeId);
+        const recipe = await Recipes.findOne({ "_id": recipeId });
 
         res.render("recipe.ejs", {
             title: "Recipe",
@@ -151,6 +155,8 @@ export const getCategory = async (req, res, next) => {
         const limitNumber = 20;
         const categoryById = await Recipes.find({
             'category': categoryId
+        }).sort({
+            _id: -1
         }).limit(limitNumber);
 
         res.render("categories.ejs", {
@@ -244,27 +250,9 @@ export const submitRecipe = async (req, res, next) => {
 };
 
 
-export const submitRecipeOnPost = async (req, res, next) => {
+export const submitRecipeOnPost = async (req, res) => {
 
     try {
-
-        let imageUploadFile;
-        let uploadPath;
-        let newImageName;
-
-        if (!req.files || Object.keys(req.files).length === 0) {
-            console.log('No Image is uploaded.');
-        } else {
-
-            imageUploadFile = req.files.image;
-            newImageName = Date.now() + '-' + imageUploadFile.name;
-            // console.log(newImageName);
-            uploadPath = path.resolve('./') + '/public/uploads/' + newImageName;
-
-            imageUploadFile.mv(uploadPath, function (err) {
-                if (err) return res.status(500).send(err);
-            })
-        }
 
         const newRecipe = await Recipes.create({
             name: req.body.name,
@@ -272,7 +260,7 @@ export const submitRecipeOnPost = async (req, res, next) => {
             email: req.body.email,
             ingredients: req.body.ingredients,
             category: req.body.category,
-            image: newImageName
+            image: req.file.filename
         });
 
 
@@ -281,11 +269,7 @@ export const submitRecipeOnPost = async (req, res, next) => {
         req.flash('infoSubmit', 'Recipe has been added successfully');
         
         res.redirect('/submit-recipe');
-        res.json({
-            success: true,
-            message: "Registered Successfully",
-
-        });
+        
     } catch (error) {
         console.log(error);
         req.flash('infoErrors', error);

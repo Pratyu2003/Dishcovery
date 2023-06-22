@@ -3,11 +3,10 @@ import expressLayouts from "express-ejs-layouts";
 import {config} from "dotenv";
 import routes from "./server/routes/recipeRoutes.js";
 import { connectDB } from "./server/models/database.js";
-import fileUpload from "express-fileupload";
 import session from "express-session";
 import cookieParser from "cookie-parser";
 import flash from "connect-flash";
-import methodOverride from "method-override";
+
 
 
 export const app = express();
@@ -18,10 +17,7 @@ config({
 });
 
 //using Middleware
-app.use(fileUpload({
-    useTempFiles: true,
-    tempFileDir: 'public/uploads/'
-}));
+
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.use(expressLayouts);

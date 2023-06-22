@@ -1,4 +1,21 @@
 import express from "express";
+import multer from "multer";
+import path from "path";
+
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, path.join(path.resolve(), '/public/uploads'));
+    },
+    filename: function (req, file, cb) {
+        const fname = Date.now() + '-' + file.originalname;
+        cb(null, fname);
+    }
+});
+
+const upload = multer({storage:storage});
+
+
 import {
     homepage,
     register,
@@ -42,7 +59,7 @@ router.get("/explore-random", exploreRandom);
 
 router.get("/submit-recipe", submitRecipe);
 
-router.post("/submit-recipe", submitRecipeOnPost);
+router.post("/submit-recipe", upload.single('image'), submitRecipeOnPost);
 
 router.delete("/recipe/:id", deleteRecipe);
 
