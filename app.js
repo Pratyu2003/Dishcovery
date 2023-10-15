@@ -40,7 +40,7 @@ app.use(flash());
 app.use("/", routes);
 
 
-app.listen(process.env.PORT, ()=>{
+app.listen(4000, ()=>{
     console.log(`Server working on port:${process.env.PORT}`);
 });
 
