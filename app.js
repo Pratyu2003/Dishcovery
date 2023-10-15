@@ -33,7 +33,7 @@ app.use(flash());
 
 
  app.set("layout", "./layouts/main.ejs");
-// app.set("view engine", "ejs");
+ app.set("view engine", "ejs");
 
 
 //using routes
